@@ -1,11 +1,11 @@
 // Random Tests.swift
 
 import Testing
-import Testing_Extras
+import Testing
 @testable import Random
 
 extension Random {
-    #TestSuites
+    #Tests
 }
 
 // MARK: - Unit Tests
