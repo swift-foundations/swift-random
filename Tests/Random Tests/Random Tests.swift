@@ -5,7 +5,12 @@ import Testing
 @testable import Random
 
 extension Random {
-    #Tests
+    enum Test {
+        @Suite struct Unit {}
+        @Suite struct EdgeCase {}
+        @Suite struct Integration {}
+        @Suite(.serialized) struct Performance {}
+    }
 }
 
 // MARK: - Unit Tests

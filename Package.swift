@@ -32,7 +32,13 @@ let package = Package(
                 .product(name: "Linux Kernel", package: "swift-linux", condition: .when(platforms: [.linux])),
                 .product(name: "Windows Kernel", package: "swift-windows", condition: .when(platforms: [.windows]))
             ]
-        )
+        ),
+        .testTarget(
+            name: "Random Tests",
+            dependencies: [
+                "Random",
+            ]
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
@@ -43,6 +49,7 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
         .enableExperimentalFeature("Lifetimes"),
         .enableExperimentalFeature("SuppressedAssociatedTypes"),
         .enableExperimentalFeature("SuppressedAssociatedTypesWithDefaults"),
