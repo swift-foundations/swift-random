@@ -16,20 +16,20 @@ extension Random {
 // MARK: - Unit Tests
 
 extension Random.Test.Unit {
-    @Test("bytes(count:) returns empty array for count 0")
-    func bytesEmptyForZero() throws {
+    @Test
+    func `bytes(count:) returns empty array for count 0`() throws {
         let bytes = try Random.bytes(count: 0)
         #expect(bytes.isEmpty)
     }
 
-    @Test("bytes(count:) returns correct length")
-    func bytesCorrectLength() throws {
+    @Test
+    func `bytes(count:) returns correct length`() throws {
         let bytes = try Random.bytes(count: 32)
         #expect(bytes.count == 32)
     }
 
-    @Test("fill(_:) fills buffer with random bytes")
-    func fillsBuffer() throws {
+    @Test
+    func `fill(_:) fills buffer with random bytes`() throws {
         var buffer = [UInt8](repeating: 0, count: 32)
         try buffer.withUnsafeMutableBytes { ptr in
             try Random.fill(ptr)
@@ -38,8 +38,8 @@ extension Random.Test.Unit {
         #expect(buffer.contains { $0 != 0 })
     }
 
-    @Test("fill(_:) handles empty buffer")
-    func fillEmptyBuffer() throws {
+    @Test
+    func `fill(_:) handles empty buffer`() throws {
         var buffer: [UInt8] = []
         try buffer.withUnsafeMutableBytes { ptr in
             try Random.fill(ptr)
@@ -51,16 +51,16 @@ extension Random.Test.Unit {
 // MARK: - Edge Cases
 
 extension Random.Test.EdgeCase {
-    @Test("bytes(count:) generates different values on successive calls")
-    func differentValues() throws {
+    @Test
+    func `bytes(count:) generates different values on successive calls`() throws {
         let bytes1 = try Random.bytes(count: 16)
         let bytes2 = try Random.bytes(count: 16)
         // Statistically, two 128-bit random values should never be equal
         #expect(bytes1 != bytes2)
     }
 
-    @Test("bytes(count:) handles large buffers (1 MB)")
-    func largeBuffer() throws {
+    @Test
+    func `bytes(count:) handles large buffers (1 MB)`() throws {
         let bytes = try Random.bytes(count: 1024 * 1024)
         #expect(bytes.count == 1024 * 1024)
     }
