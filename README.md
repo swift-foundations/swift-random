@@ -100,7 +100,7 @@ swift-random is an umbrella over `Random Primitives` plus the platform kernel th
 ## Community
 
 <!-- BEGIN: discussion -->
-*Discussion thread will be created at first public flip.*
+*Discussion thread will be created at the first public release.*
 <!-- END: discussion -->
 
 ## License
