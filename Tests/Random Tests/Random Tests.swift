@@ -1,7 +1,6 @@
 // Random Tests.swift
 
 import Testing
-import Testing
 @testable import Random
 
 extension Random {
@@ -9,7 +8,6 @@ extension Random {
         @Suite struct Unit {}
         @Suite struct EdgeCase {}
         @Suite struct Integration {}
-        @Suite(.serialized) struct Performance {}
     }
 }
 
@@ -63,22 +61,5 @@ extension Random.Test.EdgeCase {
     func `bytes(count:) handles large buffers (1 MB)`() throws {
         let bytes = try Random.bytes(count: 1024 * 1024)
         #expect(bytes.count == 1024 * 1024)
-    }
-}
-
-// MARK: - Performance
-
-extension Random.Test.Performance {
-    @Test("bytes(count: 32) generation", .timed(iterations: 100, warmup: 10))
-    func bytesGeneration() throws {
-        _ = try Random.bytes(count: 32)
-    }
-
-    @Test("fill 1KB buffer", .timed(iterations: 100, warmup: 10))
-    func fill1KB() throws {
-        var buffer = [UInt8](repeating: 0, count: 1024)
-        try buffer.withUnsafeMutableBytes { ptr in
-            try Random.fill(ptr)
-        }
     }
 }

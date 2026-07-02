@@ -37,7 +37,8 @@ let package = Package(
             name: "Random Tests",
             dependencies: [
                 "Random",
-            ]
+            ],
+            path: "Tests/Random Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
