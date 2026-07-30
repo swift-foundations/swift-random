@@ -64,7 +64,7 @@ extension Random.Test.Unit {
 
 // MARK: - Edge Cases
 
-extension Random.Test.EdgeCase {
+extension Random.Test.`Edge Case` {
     @Test
     func `bytes(count:) generates different values on successive calls`() throws {
         let bytes1 = try Random.bytes(count: 16)
