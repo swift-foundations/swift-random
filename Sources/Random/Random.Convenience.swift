@@ -20,11 +20,11 @@ extension Random {
     /// // Generate a nonce
     /// let nonce = try Random.bytes(count: 12)
     /// ```
-    public static func bytes(count: Int) throws(Swift.Error) -> [UInt8] {
+    public static func bytes(count: Int) throws(Random.Error) -> [UInt8] {
         guard count > 0 else { return [] }
         var result = [UInt8](repeating: 0, count: count)
-        let outcome: Result<Void, Swift.Error> = result.withUnsafeMutableBytes { buffer in
-            do throws(Swift.Error) {
+        let outcome: Result<Void, Random.Error> = result.withUnsafeMutableBytes { buffer in
+            do throws(Random.Error) {
                 try fill(buffer)
                 return .success(())
             } catch {

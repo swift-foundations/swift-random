@@ -28,6 +28,21 @@ extension Random.Test.Unit {
     }
 
     @Test
+    func `bytes(count:) preserves Random.Error in its public signature`() {
+        // Compile-time proof: the convenience API's typed error is Random.Error,
+        // not an erased Swift.Error.
+        let typed: (Int) throws(Random.Error) -> [UInt8] = Random.bytes(count:)
+
+        // The typed catch binds the concrete Random.Error without erasure.
+        do throws(Random.Error) {
+            _ = try typed(16)
+        } catch {
+            let concrete: Random.Error = error
+            Issue.record("Random.bytes(count:) failed unexpectedly: \(concrete)")
+        }
+    }
+
+    @Test
     func `fill(_:) fills buffer with random bytes`() throws {
         var buffer = [UInt8](repeating: 0, count: 32)
         try buffer.withUnsafeMutableBytes { ptr in
