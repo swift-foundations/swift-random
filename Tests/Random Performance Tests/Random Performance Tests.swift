@@ -1,5 +1,3 @@
-// Random Performance Tests.swift
-
 import Random
 import Testing
 

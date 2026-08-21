@@ -1,5 +1,3 @@
-// Random Tests.swift
-
 import Testing
 
 @testable import Random
@@ -11,8 +9,6 @@ extension Random {
         @Suite struct Integration {}
     }
 }
-
-// MARK: - Unit Tests
 
 extension Random.Test.Unit {
     @Test
@@ -29,11 +25,9 @@ extension Random.Test.Unit {
 
     @Test
     func `bytes(count:) preserves Random.Error in its public signature`() {
-        // Compile-time proof: the convenience API's typed error is Random.Error,
-        // not an erased Swift.Error.
+
         let typed: (Int) throws(Random.Error) -> [UInt8] = Random.bytes(count:)
 
-        // The typed catch binds the concrete Random.Error without erasure.
         do throws(Random.Error) {
             _ = try typed(16)
         } catch {
@@ -48,7 +42,7 @@ extension Random.Test.Unit {
         try buffer.withUnsafeMutableBytes { ptr in
             try Random.fill(ptr)
         }
-        // At least some bytes should be non-zero (statistically certain)
+
         #expect(buffer.contains { $0 != 0 })
     }
 
@@ -62,14 +56,12 @@ extension Random.Test.Unit {
     }
 }
 
-// MARK: - Edge Cases
-
 extension Random.Test.`Edge Case` {
     @Test
     func `bytes(count:) generates different values on successive calls`() throws {
         let bytes1 = try Random.bytes(count: 16)
         let bytes2 = try Random.bytes(count: 16)
-        // Statistically, two 128-bit random values should never be equal
+
         #expect(bytes1 != bytes2)
     }
 
