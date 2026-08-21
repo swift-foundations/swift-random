@@ -25,7 +25,7 @@ extension Random {
         var result = [UInt8](repeating: 0, count: count)
         let outcome: Result<Void, Random.Error> = result.withUnsafeMutableBytes { buffer in
             do throws(Random.Error) {
-                try fill(buffer)
+                try unsafe fill(buffer)
                 return .success(())
             } catch {
                 return .failure(error)
