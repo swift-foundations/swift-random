@@ -1,4 +1,4 @@
-@_exported public import Random_Primitives
+@_exported public import Random
 
 #if canImport(Darwin)
     @_exported public import Darwin_Kernel

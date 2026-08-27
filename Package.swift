@@ -19,18 +19,18 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-random-primitives.git",
+            url: "https://github.com/swift-molecules/swift-random.git",
             branch: "main"
         ),
-        .package(url: "https://github.com/swift-foundations/swift-darwin.git", branch: "main"),
-        .package(url: "https://github.com/swift-foundations/swift-linux.git", branch: "main"),
-        .package(url: "https://github.com/swift-foundations/swift-windows.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-darwin.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-linux.git", branch: "main"),
+        .package(url: "https://github.com/swift-compositions/swift-windows.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "Random",
             dependencies: [
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
+                .product(name: "Random", package: "swift-random"),
                 .product(
                     name: "Darwin Kernel",
                     package: "swift-darwin",

@@ -39,7 +39,7 @@ Add swift-random to your Package.swift:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-foundations/swift-random.git", branch: "main")
+    .package(url: "https://github.com/swift-compositions/swift-random.git", branch: "main")
 ]
 ```
 
@@ -65,11 +65,11 @@ Add to your target:
 - **Typed throws end-to-end** — every throwing API throws `Random.Error`; no `any Error` escapes the surface.
 - **Allocation-free path** — `Random.fill(_:)` writes into a caller-owned buffer; `Random.bytes(count:)` is the allocating convenience.
 - **Testable generation** — the `Random.Generator` protocol lets tests inject deterministic generators in place of the OS CSPRNG.
-- **No Foundation import** — the package depends only on its ecosystem primitives and platform kernels.
+- **No Foundation import** — the package depends only on its ecosystem molecule and platform kernels.
 
 ## API Surface
 
-swift-random is an umbrella over `Random Primitives` plus the platform kernel that provides `fill(_:)` for the compilation target. Importing `Random` gives you the whole surface:
+swift-random is an umbrella over the `Random` molecule plus the platform kernel that provides `fill(_:)` for the compilation target. Importing `Random` gives you the whole surface:
 
 | Symbol | Role |
 |--------|------|
@@ -92,10 +92,10 @@ swift-random is an umbrella over `Random Primitives` plus the platform kernel th
 
 ### Dependencies
 
-- swift-random-primitives (pre-release, no tags yet) — `Random` namespace, `Random.Error`, and the `Random.Generator` protocol.
-- [swift-darwin](https://github.com/swift-foundations/swift-darwin) — Darwin kernel interface providing `Random.fill(_:)` on Apple platforms.
-- [swift-linux](https://github.com/swift-foundations/swift-linux) — Linux kernel interface providing `Random.fill(_:)` on Linux.
-- [swift-windows](https://github.com/swift-foundations/swift-windows) — Windows kernel interface providing `Random.fill(_:)` on Windows.
+- [swift-molecules/swift-random](https://github.com/swift-molecules/swift-random) (pre-release, no tags yet) — `Random` namespace, `Random.Error`, and the `Random.Generator` protocol.
+- [swift-darwin](https://github.com/swift-compositions/swift-darwin) — Darwin kernel interface providing `Random.fill(_:)` on Apple platforms.
+- [swift-linux](https://github.com/swift-compositions/swift-linux) — Linux kernel interface providing `Random.fill(_:)` on Linux.
+- [swift-windows](https://github.com/swift-compositions/swift-windows) — Windows kernel interface providing `Random.fill(_:)` on Windows.
 
 ## Community
 

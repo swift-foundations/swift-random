@@ -2,7 +2,7 @@
 # Triaged 2026-04-29 — anomaly-fix pass after wave-4 PR-branch triage didn't apply.
 description: "Cryptographically-secure random bytes from the OS CSPRNG behind one cross-platform API for Swift."
 topics:
-  - foundations
+  - compositions
   - random
 homepage: "https://swift-institute.org"
 readme:
